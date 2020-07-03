@@ -1,0 +1,22 @@
+.inpurSearch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 10px;
+}
+
+.inpurSearch label {
+  display: inline;
+}
+
+.inpurSearch input {
+  width: 350px;
+  text-align: center;
+  border-radius: 25px;
+}
+/*# sourceMappingURL=search-input.css.map */

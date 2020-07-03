@@ -1,0 +1,35 @@
+.todo-item{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgb(43, 81, 250);
+    margin: 5px 0;
+    align-items: center;
+    border-radius: 10px;
+    .task-text{
+        margin: 0;
+        padding-left: 30px;
+        color: #000;
+        &.task_is_done{
+            text-decoration: line-through;
+        };
+        &.task_is_important{
+            color: blue;
+        }
+    }
+    button{
+        display: inline-flex;
+        width: 30px;
+        height: 30px;
+        margin: 5px auto;
+        margin-right: 5px;
+        color: red;
+        background: none;
+        border: none;
+        
+        i{
+            margin: 0 auto;
+        }
+    }
+    button:last-child{
+        color: green;
+    }    }
