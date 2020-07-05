@@ -2,11 +2,11 @@ import React from 'react';
 
 import './number-of.css';
 
-function NumberOf(){
+function NumberOf(props){
     return(
       <div className="numberOf">
-          <p><span>0</span> more to do, </p>
-          <p><span>0</span> done</p>
+          <p><span>{props.done}</span> more to do, </p>
+          <p><span>{props.toDo}</span> done</p>
       </div>
     )
   }

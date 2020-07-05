@@ -24,27 +24,31 @@
 }
 
 .todo-item .task-text.task_is_important {
-  color: blue;
+  color: yellow;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  background: linear-gradient(45deg, rgb(219, 0, 248), rgb(235, 252, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.todo-item button {
+.todo-item .task-item i {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 30px;
   height: 30px;
-  margin: 5px auto;
-  margin-right: 5px;
   color: red;
-  background: none;
-  border: none;
-}
-
-.todo-item button i {
   margin: 0 auto;
 }
 
-.todo-item button:last-child {
+.todo-item #important {
   color: green;
 }
 /*# sourceMappingURL=todo-item.css.map */

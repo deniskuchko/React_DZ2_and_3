@@ -4,15 +4,18 @@ import ButtonsFilters from '../buttons-filters/ButtonsFilters';
 
 import './search-input.css';
 
-
-function SearchInput(){
+class SearchInput extends React.Component{
+  
+  render(){
     return(
-      <div className="inpurSearch">        
+      <form className="inpurSearch">        
         <input placeholder="type to search" id="qwer"/>
         <ButtonsFilters/>
-      </div>
+      </form>
       
     )
+  }
+    
 }
 
 export default SearchInput;

@@ -13,23 +13,27 @@
             text-decoration: line-through;
         };
         &.task_is_important{
-            color: blue;
+            color: yellow;
+            transform: scale(1.5);
+            background: linear-gradient(45deg, #000, #fff);
+            
         }
     }
-    button{
-        display: inline-flex;
-        width: 30px;
-        height: 30px;
-        margin: 5px auto;
-        margin-right: 5px;
-        color: red;
-        background: none;
-        border: none;
-        
-        i{
+    .task-item{
+        i{  
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            color: red;
             margin: 0 auto;
         }
     }
-    button:last-child{
+    #important{
         color: green;
-    }    }
+    }  
+}  
+    
+    
+    

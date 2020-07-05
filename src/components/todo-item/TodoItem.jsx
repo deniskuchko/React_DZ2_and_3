@@ -5,51 +5,52 @@ import './todo-item.css';
 class TodoItem extends React.Component {
   constructor() {
     super();
-    this.state = {
-      doneOk: false,
+    /* this.state = {
       importantOk: false,
-    }
+    } */
   }
   render(){
-    const {message, onDelete, important} = this.props;
+    const {message, done, important} = this.props;
     let classNameText = "task-text";
     
     
     let clickHandler = () => {
-      this.setState(
+      this.props.onToogle();
+      /* this.setState(
         (prevState) => {
           return{
-            doneOk: !prevState.doneOk
+            done: !prevState.done
           };
         }
-      )
+      ) */
     };
     
     let removeHandler = () => {
       this.props.onDelete();
-      console.log('hi')
     };
 
     let ckickImportant = () => {
-      this.setState(
+      this.props.onImportant();
+      /* this.setState(
         (prevColor) => {
           
           return{
             importantOk: !prevColor.important
+            
           };
         }
-      )
+      ) */
     };
-    let importantHandler = () => {
+    /* let importantHandler = () => {
       ckickImportant();
       this.props.important();
-    };
+    }; */
     
-    if(this.state.doneOk){
+    if(done){
       classNameText += " task_is_done";
     }
 
-    if(this.state.importantOk){
+    if(important){
       classNameText += " task_is_important";
     }
     
@@ -63,20 +64,22 @@ class TodoItem extends React.Component {
               {message}
         </p>
         <div className = "task-item">
-          <button id="delete" >
+          
             <i className="far fa-trash-alt"
+              id="delete"
               onClick = {() => {
               removeHandler()}}>
             </i>
-          </button>
-          <button id="important">
-            <i className="fas fa-exclamation" 
+          
+          
+            <i className="fas fa-exclamation"
+            id="important" 
             onClick = {() => {
-              importantHandler()}}>
+              ckickImportant()}}>
             </i>
-          </button>
+          
         </div>
-        </div>
+      </div>
       ) 
       
   }
