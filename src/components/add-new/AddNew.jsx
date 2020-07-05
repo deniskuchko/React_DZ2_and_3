@@ -26,7 +26,7 @@ class AddNew extends React.Component{
                 <input type="text" 
                   placeholder="Add new" 
                   value = {this.state.label} 
-                  onChange ={this.onChange}
+                  onChange = {this.onChange}
                   />
                 <button id="add" >Add</button>
             </form>

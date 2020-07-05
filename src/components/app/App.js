@@ -39,7 +39,22 @@ class App extends React.Component{
       }
     })
   }
+  onSearch = (message) =>{
+    this.setState((prev) => {
+      const todos = prev.todolist.filter((todo) => {
+        return todo.message.toLowerCase().includes(message.toLowerCase())
+      })
+      return {
+        todolist: todos
+      }
+    })
+    
+    /* this.setState( prev => {
+      return{
 
+      } 
+    })*/
+  }
   onImportant = (id) => {
     this.setState(
       (prevState) => {
@@ -70,6 +85,37 @@ class App extends React.Component{
       }
     ) 
   }
+  /* allButton  = () => {
+    this.setState(() => {
+      const todos = this.todolist.filter((todo) => {
+        return todo.id 
+      });
+      return{
+        todolist: todos,
+      };
+    });
+  }
+  activeButton = () => {
+    this.setState(() => {
+      const todos = this.todolist.filter((todo) => {
+        return todo.important 
+      });
+      return{
+        todolist: todos,
+      };
+    });
+  }
+  doneButton = () => {
+    this.setState(() => {
+      const todos = this.todolist.filter((todo) => {
+        return todo.done 
+      });
+      return{
+        todolist: todos,
+      };
+    });
+  }
+  */
   render(){
     const { todolist} = this.state;
     const doneResult = todolist.filter(todo => todo.done).length;
@@ -78,8 +124,18 @@ class App extends React.Component{
       <div className="App">
         <Header/>
         <NumberOf done = {doneResult} toDo={activeResult}/>
-        <SearchInput/>
-        <TodoList todos = {todolist} onDelete={this.onDelete} onImportant={this.onImportant} onToogle = {this.onToogle}/* addNewTask={this.addNewTask} *//>
+        <SearchInput 
+          onSearch ={this.onSearch}  
+          /* allButton = {this.allButton} 
+          activeButton = {this.activeButton} 
+          doneButton = {this.doneButton} */
+        />
+        <TodoList 
+          todos = {todolist}
+          onDelete={this.onDelete} 
+          onImportant={this.onImportant} 
+          onToogle = {this.onToogle}/* addNewTask={this.addNewTask} */
+        />
         <AddNew onAdded={this.onAdded}/>
       </div>
     );

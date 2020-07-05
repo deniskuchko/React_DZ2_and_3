@@ -27,9 +27,6 @@
   color: yellow;
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
-  background: linear-gradient(45deg, rgb(219, 0, 248), rgb(235, 252, 0));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .todo-item .task-item i {
