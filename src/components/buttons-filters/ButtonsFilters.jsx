@@ -7,7 +7,7 @@ class ButtonsFilters extends React.Component{
 
   render(){
 
-    /* let clickAll = () => {
+    let clickAll = () => {
       this.props.allButton()
     }
     let clickActive = () => {
@@ -15,12 +15,12 @@ class ButtonsFilters extends React.Component{
     }
     let clickDone = () => {
       this.props.doneButton()
-    } */
+    }
     return(
       <div className="buttonsFilters">
-          <button id="all" /* onClick = {() => {clickAll()}} */>All</button>
-          <button id="active" /* onClick = {() => {clickActive()}} */>Active</button>
-          <button id="done" /* onClick = {() => {clickDone()}} */>Done</button>
+          <button id="all" onClick = {() => {clickAll()}}>All</button>
+          <button id="active" onClick = {() => {clickActive()}}>Active</button>
+          <button id="done" onClick = {() => {clickDone()}}>Done</button>
       </div>
     )
   }

@@ -85,29 +85,30 @@ class App extends React.Component{
       }
     ) 
   }
-  /* allButton  = () => {
-    this.setState(() => {
-      const todos = this.todolist.filter((todo) => {
-        return todo.id 
-      });
-      return{
-        todolist: todos,
-      };
-    });
-  }
+  allButton  = () => {
+    
+    this.setState(prev => {
+      return {
+        todolist: [...prev.todolist,]
+    }
+  })
+    /* console.log ( prev.todolist); */
+  } 
   activeButton = () => {
-    this.setState(() => {
-      const todos = this.todolist.filter((todo) => {
-        return todo.important 
-      });
-      return{
+    console.log ('active');
+    this.setState(prev =>{
+      const todos = prev.todolist.filter(todo => {
+        return todo.important;
+      })
+      return {
         todolist: todos,
-      };
-    });
+      }
+    })
   }
   doneButton = () => {
-    this.setState(() => {
-      const todos = this.todolist.filter((todo) => {
+    console.log ('done');
+    this.setState((prev) => {
+      const todos = prev.todolist.filter((todo) => {
         return todo.done 
       });
       return{
@@ -115,20 +116,20 @@ class App extends React.Component{
       };
     });
   }
-  */
+  
   render(){
     const { todolist} = this.state;
-    const doneResult = todolist.filter(todo => todo.done).length;
-    const activeResult = todolist.filter(todo => !todo.done).length;
+    const doneResult = todolist.filter(todo => !todo.done).length;
+    const activeResult = todolist.filter(todo => todo.done).length;
     return (
       <div className="App">
         <Header/>
         <NumberOf done = {doneResult} toDo={activeResult}/>
         <SearchInput 
           onSearch ={this.onSearch}  
-          /* allButton = {this.allButton} 
+          allButton = {this.allButton} 
           activeButton = {this.activeButton} 
-          doneButton = {this.doneButton} */
+          doneButton = {this.doneButton}
         />
         <TodoList 
           todos = {todolist}
