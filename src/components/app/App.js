@@ -5,6 +5,8 @@ import SearchInput from '../search-input/SearchInput.jsx';
 import TodoList from '../todo-list/Todolist';
 import NumberOf from '../number-of/NumberOf';
 import AddNew from '../add-new/AddNew';
+import ButtonsFilters from '../buttons-filters/ButtonsFilters';
+
 
 import './App.css';
 
@@ -15,7 +17,9 @@ class App extends React.Component{
       {message: "Task 1", important: false, done: false, id: 1},
       {message: "Task 2", important: false, done: false, id: 2},
       {message: "Task 3", important: false, done: false, id: 3},
-    ]
+    ],
+    filterWord: "all_tasks",
+    keyWord: "",
   }
 
   onDelete = (id) => {
@@ -39,7 +43,7 @@ class App extends React.Component{
       }
     })
   }
-  onSearch = (message) =>{
+  /* onSearch = (message) =>{
     this.setState((prev) => {
       const todos = prev.todolist.filter((todo) => {
         return todo.message.toLowerCase().includes(message.toLowerCase())
@@ -47,14 +51,14 @@ class App extends React.Component{
       return {
         todolist: todos
       }
-    })
+    }) */
     
     /* this.setState( prev => {
       return{
 
       } 
-    })*/
-  }
+    })
+  }*/
   onImportant = (id) => {
     this.setState(
       (prevState) => {
@@ -85,14 +89,39 @@ class App extends React.Component{
       }
     ) 
   }
-  allButton  = () => {
+  filterTasks = (filterWord) => {
+    this.setState({filterWord});
+  }
+
+  filterFunc = (array, word) => {
+    const filtered = array.filter((todo) => {
+      switch(word){
+        case "all_tasks":
+          return todo;
+        case "important_tasks":
+          if(todo.important) return todo;
+          else break;
+        case "done_tasks":
+          if(todo.done) return todo;
+          else break;
+        default:
+          throw new Error ("no filter" + word);
+      }
+    })
+    return filtered
+  }
+
+  searchTask = (keyWord) => {
+    console.log(keyWord)
+    this.setState({keyWord});
+  };
+  /* allButton  = () => {
     
     this.setState(prev => {
       return {
         todolist: [...prev.todolist,]
     }
   })
-    /* console.log ( prev.todolist); */
   } 
   activeButton = () => {
     console.log ('active');
@@ -115,24 +144,28 @@ class App extends React.Component{
         todolist: todos,
       };
     });
-  }
+  } */
   
   render(){
-    const { todolist} = this.state;
-    const doneResult = todolist.filter(todo => !todo.done).length;
-    const activeResult = todolist.filter(todo => todo.done).length;
+    const { todolist, filterWord, keyWord} = this.state;
+    const doneResult = todolist.filter((todo) => !todo.done).length;
+    const activeResult = todolist.filter((todo) => todo.done).length;
+    const todoSearch = todolist.filter((todo) => {
+      if(!todo.message.toLowerCase().includes(keyWord.toLowerCase()));
+        return todo;
+    })
+    const todoFiltered = this.filterFunc(todoSearch, filterWord);
+    
     return (
       <div className="App">
         <Header/>
         <NumberOf done = {doneResult} toDo={activeResult}/>
         <SearchInput 
-          onSearch ={this.onSearch}  
-          allButton = {this.allButton} 
-          activeButton = {this.activeButton} 
-          doneButton = {this.doneButton}
+          onSearch={this.searchTask}
         />
+        <ButtonsFilters filterTasks = {this.filterTasks}/>
         <TodoList 
-          todos = {todolist}
+          todos = {todoFiltered}
           onDelete={this.onDelete} 
           onImportant={this.onImportant} 
           onToogle = {this.onToogle}/* addNewTask={this.addNewTask} */
